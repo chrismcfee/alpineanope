@@ -1,0 +1,16 @@
+[Mar 22 18:44:29 2020] Anope 2.0.7 starting up
+[Mar 22 18:44:29 2020] Unable to initialize languages, gettext is not installed
+[Mar 22 18:44:29 2020] Loading modules...
+[Mar 22 18:44:29 2020] Using IRCd protocol unreal4
+[Mar 22 18:44:29 2020] Loading databases...
+[Mar 22 18:44:29 2020] DB_FLATFILE: Unable to open data/anope.db for reading!
+[Mar 22 18:44:29 2020] Databases loaded
+[Mar 22 18:44:29 2020] Attempting to connect to uplink #1 ===================  port 6697
+[Mar 22 18:44:29 2020] Successfully connected to uplink #1 ========================
+[Mar 22 18:44:30 2020] Lost connection from uplink #1 ==============================
+[Mar 22 18:44:30 2020] Check that you are not connecting Anope to an SSL enabled port without configuring SSL in Anope (or vice versa)
+[Mar 22 18:44:30 2020] Disconnected, retrying in 60 seconds
+[Mar 22 18:45:11 2020] Received Terminated signal (15), exiting.
+[Mar 22 18:45:11 2020] Services terminating via signal Terminated (15)
+
+

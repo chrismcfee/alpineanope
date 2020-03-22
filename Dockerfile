@@ -5,9 +5,13 @@ MAINTAINER GGMethos <ggmethos@autistici.org>
 
 USER root
 
+RUN echo "Anope Services Installation Starting"
+
 RUN apk upgrade --update-cache --available
 
 RUN apk update && apk upgrade
+
+RUN apk add gettext
 
 RUN apk add cmake openssl clang gcc g++ make libffi-dev openssl-dev ninja
 #create services user
@@ -32,14 +36,16 @@ RUN cd /home/services/tarball/anope-2.0.7-source/ && ls -la && ls -la
 
 VOLUME ["/secrets"]
 
-mkdir /home/services/tarball/anope-2.0.7-source/customconfigs
+RUN mkdir /home/services/tarball/anope-2.0.7-source/customconfigs/
 
-COPY /secrets/config.cache /home/services/tarball/anope-2.0.7-source/customconfigs
+COPY /secrets/config.cache /home/services/tarball/anope-2.0.7-source/customconfigs/
 
-COPY /secrets/services.conf /home/services/tarball/anope-2.0.7-source/customconfigs
+COPY /secrets/services.conf /home/services/tarball/anope-2.0.7-source/customconfigs/
 
 
 #########################################################################
+
+RUN cp /home/services/tarball/anope-2.0.7-source/customconfigs/config.cache /home/services/tarball/anope-2.0.7-source/
 
 RUN cd /home/services/tarball/anope-2.0.7-source/ && ./Config -nointro -quick
 
@@ -49,13 +55,9 @@ RUN cp /home/services/tarball/anope-2.0.7-source/customconfigs/config.cache /hom
 
 RUN cp /home/services/tarball/anope-2.0.7-source/customconfigs/services.conf /home/services/services/conf/
 
+RUN chown -R services /home/services
+
 USER services
+#change this to CMD!
 
-RUN cd /home/services/services/bin/ && ./services
-
-#put configuration files in proper place
-
-#switch user to services
-
-#finally start services
-
+CMD ["./home/services/services/bin/services", "--nofork"]
